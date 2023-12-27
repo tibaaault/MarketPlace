@@ -4,10 +4,11 @@ class Routeur
 {
     public function route($uri)
     {
+
         switch ($uri) {
-            case '/home':
-                $controller = new HomePage();
-                $controller->displayHomePage();
+            case '/product':
+                $controller = new Product();
+                $controller->displayProduct();
                 break;
             default:
                 $controller = new HomePage();
