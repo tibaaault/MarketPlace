@@ -10,6 +10,10 @@ class Routeur
                 $controller = new Product();
                 $controller->displayProduct();
                 break;
+            case '/seller':
+                $controller = new Seller();
+                $controller->seller();
+                break;
             default:
                 $controller = new HomePage();
                 $controller->displayHomePage();

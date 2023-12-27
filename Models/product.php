@@ -62,7 +62,13 @@ function ProductsBySeller($id_seller)
 {
     $db = Connexion();
     try {
-        $statement = $db->prepare("SELECT * FROM product INNER JOIN user ON product.id_seller = user.id WHERE id = :id_seller");
+        $statement = $db->prepare("SELECT 
+        product.id_product AS product_id,
+        product.name AS product_name,
+        product.price,
+        product.description,
+        product.img_url
+        FROM product INNER JOIN user ON product.id_seller = user.id WHERE id = :id_seller");
         $statement->execute(array(
             'id_seller' => $id_seller
         ));

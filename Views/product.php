@@ -38,7 +38,10 @@
                                 <p class='lead'>Email : <?= $value['seller_email'] ?></p>
                             </div>
                             <div class="col-xl-4 col-sm">
-                                <a href="" class="btn btn-primary btn-lg">Contacter le vendeur</a>
+                            <form action="/seller" method="post">
+                                <input class="d-none" type="text" name="id_seller" value="<?= $value['seller_id'] ?>" />
+                                <button type="submit" class='btn btn-primary btn-lg'>Contacter le vendeur</button>
+                            </form>
                             </div>
                         </div>
                         <a href="" class="btn btn-primary btn-lg py-4">Ajouter au panier</a>
@@ -63,11 +66,11 @@
                 <div class="col-xl-3 mb-5">
                     <div class='card shadow-lg col-xl-12 col-sm border mx-auto' style="height:350px;">
                         <img src='./Pictures/<?= $value['img_url'] ?>.png' class='img-fluid mx-auto d-inline-block pt-3' style="height: 150px; width: auto;">
-                        <div class='card-body'>
-                            <h5 class='card-title pb-1'><?= $value['name'] ?></h5>
+                        <div class='card-body text-center'>
+                            <h5 class='card-title pb-1'><?= $value['product_name'] ?></h5>
                             <p class='card-text h5 pb-4'>Prix <?= $value['price'] ?>€</p>
                             <form action="/product" method="post">
-                                <input class="d-none" type="text" name="id_product" value="<?= $value['id_product'] ?>" />
+                                <input class="d-none" type="text" name="id_product" value="<?= $value['product_id'] ?>" />
                                 <button type="submit" class='btn btn-primary btn-lg'>Voir le produit</button>
                             </form>
                         </div>
