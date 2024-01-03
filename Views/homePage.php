@@ -17,8 +17,8 @@
                     <h1>Filtres <i class="fas fa-filter fa-fw"></i></h1>
                     <div class="d-flex" style="height: 20px;"></div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Rechercher un article" aria-label="SearchBar" aria-describedby="button-search" />
-                        <button class="btn btn-outline-secondary" type="button" id="search">
+                        <input type="text" class="form-control" id="searchInput" placeholder="Rechercher un article" aria-label="SearchBar" aria-describedby="button-search" />
+                        <button class="btn btn-outline-secondary" type="button" id="searchButton">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
@@ -27,14 +27,12 @@
                     <hr class="w-100" />
 
                     <div class="btn-group dropdown w-100">
-                        <button class="btn btn-secondary btn-lg dropdown-toggle" type="input" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Choisir une catégorie
-                        </button>
-                        <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Digital</a>
-                            <a class="dropdown-item" href="#">Immobilier</a>
-                            <a class="dropdown-item" href="#">Mode</a>
-                        </div>
+                        <select class="form-select bg-secondary" name="type" required>
+                            <option disabled>Choisir une catégorie</option>
+                            <option value="Digital">Digital</option>
+                            <option value="Immobilier">Immobilier</option>
+                            <option value="Mode">Mode</option>
+                        </select>
                     </div>
                     <!-- Prix -->
                     <div class="d-flex" style="height: 60px;"></div>
@@ -64,7 +62,7 @@
                 <div class="col-xl-10 mx-auto">
                     <h1>Articles</h1>
                     <div class="d-flex" style="height: 50px;"></div>
-                    <div class="row d-flex flex-wrap">
+                    <div class="row d-flex flex-wrap" id="productsContainer">
                         <?php foreach ($products as $product) {
                         ?>
                             <div class="col-xl-4 mb-5">
@@ -77,7 +75,7 @@
                                         <p class='card-text h5 pb-4'>Prix <?= $product['price'] ?>€</p>
                                         <form action="/product" method="post">
                                             <input class="d-none" type="text" name="id_product" value="<?= $product['id_product'] ?>" />
-                                            <button type="submit"  class='btn btn-primary btn-lg'>Voir le produit</button>
+                                            <button type="submit" class='btn btn-primary btn-lg'>Voir le produit</button>
                                         </form>
                                     </div>
                                 </div>

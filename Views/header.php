@@ -25,6 +25,10 @@
                 <li class="nav-item">
                     <span class="h4"><a class="nav-link" href="/newProduct">Ajouter un produit</a></span>
                 </li>
+                <li class="nav-item">
+                    <span class="h4"><a class="nav-link" href="/displaySellerProducts">Mes produit</a></span>
+                </li>
+                <!-- Jusqu'à ici -->
             </ul>
         </div>
 

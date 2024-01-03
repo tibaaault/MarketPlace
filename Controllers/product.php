@@ -56,4 +56,12 @@ class Product
             echo "Erreur";
         }
     }
+    function displaySellerProducts()
+    {
+        include_once 'Models/product.php';
+        // $products = ProductsBySeller($_SESSION['id']);
+        $products = ProductsBySeller(1);
+        include 'Views/header.php';
+        include 'Views/displaySellerProducts.php';
+    }
 }

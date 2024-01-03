@@ -98,3 +98,24 @@ function AddProductBDD($name, $price, $type, $img_url, $description, $seller_id)
         die('Erreur : ' . $e->getMessage());
     }
 }
+
+
+function ModifyProductBDD($id_product, $name, $price, $type, $img_url, $description)
+{
+    $db = Connexion();
+
+    try {
+        $statement = $db->prepare("UPDATE product SET name = :name, price = :price, type = :type, img_url = :img_url, description = :description WHERE id_product = :id_product");
+        $statement->execute(array(
+            'id_product' => $id_product,
+            'name' => $name,
+            'price' => $price,
+            'type' => $type,
+            'img_url' => $img_url,
+            'description' => $description
+        ));
+    } catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+}
+

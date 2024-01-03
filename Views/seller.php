@@ -45,7 +45,7 @@
                     <div class="col-xl-3 col-sm-6">
                         <div class="card shadow-lg col-sm border text-center">
                             <div class="mx-auto text-center p-3">
-                                <img src='./Pictures/<?= $productSeller['img_url'] ?>.png' class='img-fluid' alt='<?= $productSeller['product_name'] ?>' style="height: 200px; width: auto;">
+                                <img src='./Pictures/<?= $productSeller['img_url'] ?>' class='img-fluid' alt='<?= $productSeller['product_name'] ?>' style="height: 200px; width: auto;">
                             </div>
                             <div class='d-flex' style='height: 20px;'></div>
                             <p class='h4 text-center'><?= $productSeller['product_name'] ?></p>
