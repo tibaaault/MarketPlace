@@ -11,3 +11,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+<link
+      rel="stylesheet"
+      href="https://kit-pro.fontawesome.com/releases/v6.2.0/css/pro.min.css "
+    />

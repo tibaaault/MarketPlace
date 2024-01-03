@@ -70,7 +70,7 @@
                             <div class="col-xl-4 mb-5">
                                 <div class='card shadow-lg col-xl-12 col-sm-6 border pt-5 mx-auto' style="height:450px;">
                                     <div style="height: 200px;">
-                                        <img src='./Pictures/<?= $product['img_url'] ?>.png' class='img-fluid mx-auto h-75 d-inline-block'>
+                                        <img src='./Pictures/<?= $product['img_url'] ?>' class='img-fluid mx-auto h-75 d-inline-block'>
                                     </div>
                                     <div class='card-body'>
                                         <h5 class='card-title pb-1'><?= $product['name'] ?></h5>

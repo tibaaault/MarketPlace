@@ -79,3 +79,22 @@ function ProductsBySeller($id_seller)
 
     return $products;
 }
+
+function AddProductBDD($name, $price, $type, $img_url, $description, $seller_id)
+{
+    $db = Connexion();
+
+    try {
+        $statement = $db->prepare("INSERT INTO product (name, price, type, img_url, description, id_seller) VALUES (:name, :price, :type, :img_url, :description, :id_seller)");
+        $statement->execute(array(
+            'name' => $name,
+            'price' => $price,
+            'type' => $type,
+            'img_url' => $img_url,
+            'description' => $description,
+            'id_seller' => $seller_id
+        ));
+    } catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+}
