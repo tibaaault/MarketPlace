@@ -17,7 +17,7 @@
                     <h1>Filtres <i class="fas fa-filter fa-fw"></i></h1>
                     <div class="d-flex" style="height: 20px;"></div>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" id="searchInput" placeholder="Rechercher un article" aria-label="SearchBar" aria-describedby="button-search" />
+                        <input type="search" class="form-control" id="search" placeholder="Rechercher un article" aria-label="SearchBar" aria-describedby="button-search" />
                         <button class="btn btn-outline-secondary" type="button" id="searchButton">
                             <i class="fas fa-search"></i>
                         </button>
@@ -28,7 +28,7 @@
 
                     <div class="btn-group dropdown w-100">
                         <select class="form-select bg-secondary" name="type" required>
-                            <option disabled>Choisir une catégorie</option>
+                            <option value="All">Toutes les catégories</option>
                             <option value="Digital">Digital</option>
                             <option value="Immobilier">Immobilier</option>
                             <option value="Mode">Mode</option>
@@ -39,20 +39,16 @@
                     <p class='h4'>Prix</p>
                     <hr class="w-100" />
                     <div class="d-flex" style="height: 20px;"></div>
-
                     <div class="d-flex justify-content-center">
                         <div class="input-group mb-3 me-2">
-                            <input type="text" class="form-control" placeholder="Prix min" aria-label="Prix min" aria-describedby="button-addon2" oninput="this.value = this.value.replace(/[^0-9]/g, '');" />
+                            <input type="text" class="form-control" placeholder="Prix min" id="minPrice" aria-label="Prix min" aria-describedby="button-addon2" oninput="this.value = this.value.replace(/[^0-9]/g, ''); filterProducts();">
                             <span class="input-group-text" id="button-addon2">€</span>
                         </div>
                         <div class="input-group mb-3 ms-2">
-                            <input type="text" class="form-control" placeholder="Prix max" aria-label="Prix max" aria-describedby="button-addon2" oninput="this.value = this.value.replace(/[^0-9]/g, '');" />
+                            <input type="text" class="form-control" placeholder="Prix max" id="maxPrice" aria-label="Prix max" aria-describedby="button-addon2" oninput="this.value = this.value.replace(/[^0-9]/g, ''); filterProducts();">
                             <span class="input-group-text" id="button-addon2">€</span>
                         </div>
                     </div>
-
-
-
 
                 </div>
             </div>
@@ -64,9 +60,9 @@
                     <div class="d-flex" style="height: 50px;"></div>
                     <div class="row d-flex flex-wrap" id="productsContainer">
                         <?php foreach ($products as $product) {
-                           $product['price'] = str_replace('.', ',', $product['price']);
+                            $product['price'] = str_replace('.', ',', $product['price']);
                         ?>
-                            <div class="col-xl-4 mb-5">
+                            <div class="col-xl-4 mb-5 product-card" data-category="<?= $product['type'] ?>">
                                 <div class='card shadow-lg col-xl-12 col-sm-6 border pt-5 mx-auto' style="height:450px;">
                                     <div style="height: 200px;">
                                         <img src='./Pictures/<?= $product['img_url'] ?>' class='img-fluid mx-auto h-75 d-inline-block'>
@@ -90,6 +86,5 @@
         </div>
     </div>
 </body>
-<script src="./js/homePage.js"></script>
 
 </html>
