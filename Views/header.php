@@ -12,7 +12,7 @@
             <a class="navbar-brand mt-2 mt-lg-0" href="/home">
                 <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="15" alt="MDB Logo" loading="lazy" />
             </a>
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 ms-5 mb-lg-0">
                 <li class="nav-item">
                     <span class="h4"><a class="nav-link" href="/home">MarketPlace</a></span>
                 </li>

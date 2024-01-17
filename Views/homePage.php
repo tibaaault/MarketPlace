@@ -64,6 +64,7 @@
                     <div class="d-flex" style="height: 50px;"></div>
                     <div class="row d-flex flex-wrap" id="productsContainer">
                         <?php foreach ($products as $product) {
+                           $product['price'] = str_replace('.', ',', $product['price']);
                         ?>
                             <div class="col-xl-4 mb-5">
                                 <div class='card shadow-lg col-xl-12 col-sm-6 border pt-5 mx-auto' style="height:450px;">

@@ -41,6 +41,7 @@
             <div class="row">
                 <?php
                 foreach ($productsSeller as $productSeller) {
+                    $productSeller['price'] = str_replace('.', ',', $productSeller['price']);
                 ?>
                     <div class="col-xl-3 col-sm-6">
                         <div class="card shadow-lg col-sm border text-center">

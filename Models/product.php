@@ -37,6 +37,7 @@ function OneProductByID($id_product)
         product.id_product AS product_id,
         product.name AS product_name,
         product.price,
+        product.type,
         product.description,
         product.img_url,
         user.id AS seller_id,
@@ -113,6 +114,20 @@ function ModifyProductBDD($id_product, $name, $price, $type, $img_url, $descript
             'type' => $type,
             'img_url' => $img_url,
             'description' => $description
+        ));
+    } catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+}
+
+function DeleteProduct($id_product)
+{
+    $db = Connexion();
+
+    try {
+        $statement = $db->prepare("DELETE FROM product WHERE id_product = :id_product");
+        $statement->execute(array(
+            'id_product' => $id_product
         ));
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());

@@ -12,6 +12,7 @@
             <div class="d-flex" style="height: 100px;"></div>
             <?php
             foreach ($product as $product => $value) {
+                $id_product = $value['product_id'];
             ?>
                 <div class="col-xl-12">
                     <div class='card shadow-lg col-sm border pt-5'>
@@ -108,6 +109,10 @@
         <div class="row d-flex flex-wrap">
             <?php
             foreach ($productsSeller as $productsSeller => $value) {
+                if ($id_product == $value['product_id']) {
+                    continue;
+                }
+                $value['price'] = str_replace('.', ',', $value['price']);
             ?>
                 <div class="col-xl-3 mb-5">
                     <div class='card shadow-lg col-xl-12 col-sm border mx-auto' style="height:350px;">

@@ -26,6 +26,18 @@ class Routeur
                 $controller = new Product();
                 $controller->displaySellerProducts();
                 break;
+            case '/modifyProduct':
+                $controller = new Product();
+                $controller->modifyProduct();
+                break;
+            case '/modifyProductBDD':
+                $controller = new Product();
+                $controller->modifyProductBDD();
+                break;
+            case '/deleteProduct':
+                $controller = new Product();
+                $controller->deleteProduct();
+                break;
             default:
                 $controller = new HomePage();
                 $controller->displayHomePage();

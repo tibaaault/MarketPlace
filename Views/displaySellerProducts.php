@@ -13,6 +13,7 @@
             <div class="row">
                 <?php
                 foreach ($products as $product) {
+                    $product['price'] = str_replace('.', ',', $product['price']);
                 ?>
                     <div class="col-xl-3 col-sm-6">
                         <div class="card shadow-lg col-sm border text-center">
@@ -23,9 +24,9 @@
                             <p class='h4 text-center'><?= $product['product_name'] ?></p>
                             <div class='d-flex' style='height: 20px;'></div>
                             <p class='h4 text-center'><?= $product['price'] ?>€</p>
-                            <form action="/product" method="post">
+                            <form action="/modifyProduct" method="post">
                                 <input class="d-none" type="text" name="id_product" value="<?= $product['product_id'] ?>" />
-                                <button type="submit" class='btn btn-primary btn-lg'>Voir le produit</button>
+                                <button type="submit" class='btn btn-primary btn-lg' name="modifyProduct">Modifier le produit</button>
                             </form>
                         </div>
                         <div class='d-flex' style='height: 20px;'></div>
