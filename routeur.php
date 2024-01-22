@@ -37,6 +37,14 @@ class Routeur
                 $controller = new Product();
                 $controller->deleteProduct();
                 break;
+            case '/signup':
+                $controller = new User();
+                $controller->signup();
+                break;
+            case '/signin':
+                    $controller = new User();
+                    $controller->signin();
+                    break;
             default:
                 $controller = new HomePage();
                 $controller->displayHomePage();
