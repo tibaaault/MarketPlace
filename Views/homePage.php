@@ -49,7 +49,21 @@
                             <span class="input-group-text" id="button-addon2">€</span>
                         </div>
                     </div>
-
+                    <!-- Note -->
+                    <div class="d-flex" style="height: 60px;"></div>
+                    <p class='h4'>Note</p>
+                    <hr class="w-100" />
+                    <div class="d-flex" style="height: 20px;"></div>
+                    <div class="d-flex justify-content-center">
+                        <div class="input-group mb-3 me-2">
+                            <input type="text" class="form-control" placeholder="Note min" id="minNote" aria-label="Note min" aria-describedby="button-addon2" oninput="this.value = this.value.replace(/[^0-9]/g, ''); filterProducts();">
+                            <span class="input-group-text" id="button-addon2">/5</span>
+                        </div>
+                        <div class="input-group mb-3 ms-2">
+                            <input type="text" class="form-control" placeholder="Note max" id="maxNote" aria-label="Note max" aria-describedby="button-addon2" oninput="this.value = this.value.replace(/[^0-9]/g, ''); filterProducts();">
+                            <span class="input-group-text" id="button-addon2">/5</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -86,5 +100,5 @@
         </div>
     </div>
 </body>
-<script src="./js/filters.js"></script>
+<script src="./Views/js/filters.js"></script>
 </html>

@@ -15,7 +15,7 @@ function Connexion()
 function AllProducts()
 {
     $db = Connexion();
-
+    
     try {
         $statement = $db->prepare("SELECT * FROM product");
         $statement->execute();
@@ -30,6 +30,7 @@ function AllProducts()
 function OneProductByID($id_product)
 {
     $db = Connexion();
+
 
     try {
         $statement = $db->prepare("SELECT * FROM product INNER JOIN user ON product.id_seller = user.id WHERE id_product = :id_product");

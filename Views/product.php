@@ -35,7 +35,7 @@
                                         <div class="col-xl-12 col-sm mx-auto text-center">
                                             <form action="/seller" method="post">
                                                 <input class="d-none" type="text" name="id_seller" value="<?= $value['seller_id'] ?>" />
-                                                <button type="submit" class='btn btn-primary btn-lg'>Contacter le vendeur</button>
+                                                <button type="submit" class='btn btn-primary btn-lg'>Afficher la page du vendeur</button>
                                             </form>
                                         </div>
                                     </div>

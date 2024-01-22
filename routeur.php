@@ -4,7 +4,6 @@ class Routeur
 {
     public function route($uri)
     {
-
         switch ($uri) {
             case '/product':
                 $controller = new Product();
