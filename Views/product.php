@@ -21,7 +21,7 @@
                                 <div class="col-xl-8">
                                     <div class='d-flex' style='height: 20px;'></div>
                                     <div class="mx-auto text-center">
-                                        <img src='./Pictures/<?= $value['img_url'] ?>' class='img-fluid' alt='<?= $value['name'] ?>' style="height: 300px; width: auto;">
+                                        <img src='./Pictures/<?= $value['img_url'] ?>' class='img-fluid' style="height: 300px; width: auto;">
                                     </div>
                                 </div>
                                 <div class="col-xl-4 border border-2 rounded-9 border-dark p-4">

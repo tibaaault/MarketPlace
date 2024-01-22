@@ -3,7 +3,7 @@
 require_once 'PaiementModel.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $model = new PaiementModel();
+    // $model = new PaiementModel();
 
     $paymentMethod = $_POST['payment_method'];
     if ($paymentMethod === 'credit_card') {
@@ -18,5 +18,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Redirigez vers la vue de paiement après le traitement
 header("Location: paiement_view.php");
 exit();
-?>
+
 

@@ -11,13 +11,12 @@ function Connexion()
     return $db;
 }
 
-
 function AllProducts()
 {
     $db = Connexion();
     
     try {
-        $statement = $db->prepare("SELECT * FROM product");
+        $statement = $db->prepare("SELECT * FROM product, review WHERE product.id_product = review.id_product");
         $statement->execute();
         $products = $statement->fetchAll(PDO::FETCH_ASSOC);
     } catch (Exception $e) {
@@ -133,5 +132,22 @@ function DeleteProduct($id_product)
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
+}
+
+function DisplayRatingProduct($id_product)
+{
+    $db = Connexion();
+
+    try {
+        $statement = $db->prepare("SELECT AVG(rating) AS rating FROM review WHERE id_product = :id_product");
+        $statement->execute(array(
+            'id_product' => $id_product
+        ));
+        $rating = $statement->fetchAll(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+
+    return $rating;
 }
 
