@@ -36,18 +36,3 @@ class AddCart {
     
 } 
 
-// Exemple d'utilisation
-// Supposons que $db est votre objet de connexion à la base de données (PDO)
-//$addCart = new AddCart($db);
-
-// Supposons que $productId est l'ID du produit que vous souhaitez ajouter au panier
-//$productId = 1;
-
-// Appel de la méthode addToCart pour ajouter le produit au panier
-//$result = $addCart->addToCart($productId);
-
-if ($result) {
-    echo 'Produit ajouté au panier avec succès!';
-} else {
-    echo 'Erreur lors de l\'ajout au panier. Le produit n\'existe peut-être pas.';
-}
