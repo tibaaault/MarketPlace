@@ -134,15 +134,12 @@ function DeleteProduct($id_product)
     }
 }
 
-function DisplayRatingProduct($id_product)
+function RatingProduct()
 {
     $db = Connexion();
-
     try {
-        $statement = $db->prepare("SELECT AVG(rating) AS rating FROM review WHERE id_product = :id_product");
-        $statement->execute(array(
-            'id_product' => $id_product
-        ));
+        $statement = $db->prepare("SELECT id_product, AVG(rating) AS rating FROM review GROUP BY id_product");
+        $statement->execute();
         $rating = $statement->fetchAll(PDO::FETCH_ASSOC);
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());

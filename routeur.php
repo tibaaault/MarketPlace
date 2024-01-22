@@ -37,6 +37,18 @@ class Routeur
                 $controller = new Product();
                 $controller->deleteProduct();
                 break;
+            case '/goMP':
+                $controller = new Message();
+                $controller->goMessage();
+                break;
+            case '/sendMessage':
+                $controller = new Message();
+                $controller->sendMessage();
+                break;
+            case '/conversation':
+                $controller = new Message();
+                $controller->displayConversation();
+                break;
             default:
                 $controller = new HomePage();
                 $controller->displayHomePage();

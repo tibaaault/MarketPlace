@@ -64,6 +64,8 @@
                             <span class="input-group-text" id="button-addon2">/5</span>
                         </div>
                     </div>
+
+
                 </div>
             </div>
 
@@ -84,6 +86,14 @@
                                     <div class='card-body'>
                                         <h5 class='card-title pb-1'><?= $product['name'] ?></h5>
                                         <p class='card-text h5 pb-4'>Prix <?= $product['price'] ?>€</p>
+                                        <?php foreach ($ratings as $rating) {
+                                            if ($rating['id_product'] == $product['id_product']) { ?>
+                                                <p class='card-text h5 pb-4' data-note="<?= $rating['rating'] ?>">Note <?= number_format($rating['rating'], 2) ?>/5</p>
+                                            <?php } else { ?>
+                                                <p class='card-text h5 pb-4' data-note="0">Aucune note</p>
+                                        <?php }
+                                        } ?>
+
                                         <form action="/product" method="post">
                                             <input class="d-none" type="text" name="id_product" value="<?= $product['id_product'] ?>" />
                                             <button type="submit" class='btn btn-primary btn-lg'>Voir le produit</button>
@@ -101,4 +111,5 @@
     </div>
 </body>
 <script src="./Views/js/filters.js"></script>
+
 </html>

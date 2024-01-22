@@ -39,7 +39,7 @@
                 <i class="fas fa-shopping-cart fa-xl"></i>
                 
             </a>
-            <a class="text-reset me-3" href="#">
+            <a class="text-reset me-3" href="/conversation">
                 <i class="fas fa-envelope fa-xl"></i>
             </a>
             <!-- Avatar -->

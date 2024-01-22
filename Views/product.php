@@ -37,6 +37,11 @@
                                                 <input class="d-none" type="text" name="id_seller" value="<?= $value['seller_id'] ?>" />
                                                 <button type="submit" class='btn btn-primary btn-lg'>Afficher la page du vendeur</button>
                                             </form>
+                                            <form action="/goMP" method="post">
+                                                <input class="d-none" type="text" name="id_seller" value="<?= $value['seller_id'] ?>" />
+                                                <input class="d-none" type="text" name="id_product" value="<?= $id_product ?>" />
+                                                <button type="submit" class='btn btn-primary btn-lg'>Envoyer un message au vendeur</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
