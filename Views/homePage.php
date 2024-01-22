@@ -27,7 +27,7 @@
                     <hr class="w-100" />
 
                     <div class="btn-group dropdown w-100">
-                        <select class="form-select bg-secondary" name="type" required>
+                        <select class="form-select" name="type" required>
                             <option value="All">Toutes les catégories</option>
                             <option value="Digital">Digital</option>
                             <option value="Immobilier">Immobilier</option>
@@ -86,5 +86,5 @@
         </div>
     </div>
 </body>
-
+<script src="./js/filters.js"></script>
 </html>
