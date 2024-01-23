@@ -63,6 +63,10 @@ class Routeur
                 $controller = new User();
                 $controller->signin();
                 break;
+            case '/addComment':
+                $controller = new Comment();
+                $controller->addComment();
+                break;
             default:
                 $controller = new HomePage();
                 $controller->displayHomePage();

@@ -5,12 +5,14 @@ class Product
     public function displayProduct()
     {
         include_once 'Models/product.php';
+        include_once 'Models/comment.php';
 
         if (isset($_POST['id_product'])) {
             $id_product = $_POST['id_product'];
             $product = OneProductByID($id_product);
             $ratings = RatingProduct();
             $productsSeller = ProductsBySeller($product[0]['seller_id']);
+            $comments = CommentProduct($id_product);
             include 'Views/header.php';
             include 'Views/product.php';
         } else {

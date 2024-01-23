@@ -74,35 +74,42 @@
                     <h1>Articles</h1>
                     <div class="d-flex" style="height: 50px;"></div>
                     <div class="row d-flex flex-wrap" id="productsContainer">
-                        <?php foreach ($products as $product) {
-                            $product['price'] = str_replace('.', ',', $product['price']);
-                        ?>
-                            <div class="col-xl-4 mb-5 product-card" data-category="<?= $product['type'] ?>">
-                                <div class='card shadow-lg col-xl-12 col-sm-6 border pt-5 mx-auto' style="height:450px;">
-                                    <div style="height: 200px;">
-                                        <img src='./Pictures/<?= $product['img_url'] ?>' class='img-fluid mx-auto h-75 d-inline-block'>
-                                    </div>
-                                    <div class='card-body'>
-                                        <h5 class='card-title pb-1'><?= $product['name'] ?></h5>
-                                        <p class='card-text h5 pb-4'>Prix <?= $product['price'] ?>€</p>
-                                        <?php foreach ($ratings as $rating) {
-                                            if ($rating['id_product'] == $product['id_product']) { ?>
-                                                <p class='card-text h5 pb-4' data-note="<?= $rating['rating'] ?>">Note <?= number_format($rating['rating'], 2) ?>/5</p>
-                                            <?php } else { ?>
-                                                <p class='card-text h5 pb-4' data-note="0">Aucune note</p>
-                                        <?php }
-                                        } ?>
+                    <?php
+foreach ($products as $product) {
+    $product['price'] = str_replace('.', ',', $product['price']);
 
-                                        <form action="/product" method="post">
-                                            <input class="d-none" type="text" name="id_product" value="<?= $product['id_product'] ?>" />
-                                            <button type="submit" class='btn btn-primary btn-lg'>Voir le produit</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        <?php
-                        }
-                        ?>
+    // Recherche de l'évaluation associée au produit
+    $productRating = null;
+    foreach ($ratings as $rating) {
+        if ($rating['id_product'] == $product['id_product']) {
+            $productRating = $rating['rating'];
+            break;
+        }
+    }
+?>
+    <div class="col-xl-4 mb-5 product-card" data-category="<?= $product['type'] ?>">
+        <div class='card shadow-lg col-xl-12 col-sm-6 border pt-5 mx-auto' style="height:450px;">
+            <div style="height: 200px;">
+                <img src='./Pictures/<?= $product['img_url'] ?>' class='img-fluid mx-auto h-75 d-inline-block'>
+            </div>
+            <div class='card-body'>
+                <h5 class='card-title pb-1'><?= $product['name'] ?></h5>
+                <p class='card-text h5 pb-4'>Prix <?= $product['price'] ?>€</p>
+                <?php if ($productRating !== null) { ?>
+                    <p class='card-text h5 pb-4' data-note="<?= $productRating ?>">Note <?= number_format($productRating, 2) ?>/5</p>
+                <?php } else { ?>
+                    <p class='card-text h5 pb-4' data-note="0">Aucune note</p>
+                <?php } ?>
+
+                <form action="/product" method="post">
+                    <input class="d-none" type="text" name="id_product" value="<?= $product['id_product'] ?>" />
+                    <button type="submit" class='btn btn-primary btn-lg'>Voir le produit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+<?php } ?>
+
                     </div>
                 </div>
             </div>
