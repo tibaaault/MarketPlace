@@ -1,4 +1,7 @@
 <?php
+
+
+
 class Seller
 {
     public function seller()
@@ -15,5 +18,14 @@ class Seller
         } else {
             echo "Erreur";
         }
+    }
+
+    public function isSeller( )
+    {
+        include_once 'Models/seller.php';
+
+        $id = $_SESSION['id'];
+        $isSeller = getTypeUser($id);
+        $_SESSION['isSeller'] = $isSeller[0]['role'];
     }
 }

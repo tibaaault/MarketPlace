@@ -61,22 +61,6 @@
                             <p class='lead ps-3' style="font-size:20px;"><?= nl2br($value['description']) ?></p>
                             <div class='d-flex' style='height: 20px;'></div>
                         </div>
-                        <!-- <div class="row">
-                            <div class="col-xl-3 col-sm">
-                                <p class='h2 text-center'>Vendeur</p>
-                            </div>
-                            <div class="col-xl-4 col-sm">
-                                <p class='lead'>Prénom : <?= $value['seller_name'] ?></p>
-                                <p class='lead'>Nom : <?= $value['seller_firstname'] ?></p>
-                                <p class='lead'>Email : <?= $value['seller_email'] ?></p>
-                            </div>
-                            <div class="col-xl-4 col-sm">
-                                <form action="/seller" method="post">
-                                    <input class="d-none" type="text" name="id_seller" value="<?= $value['seller_id'] ?>" />
-                                    <button type="submit" class='btn btn-primary btn-lg'>Contacter le vendeur</button>
-                                </form>
-                            </div>
-                        </div> -->
                         <div class='d-flex' style='height: 20px;'></div>
                         <hr>
                         <hr>
@@ -84,7 +68,13 @@
                             <div class='d-flex' style='height: 20px;'></div>
                             <p class='h3 text-dark'>Notation</p>
                             <div class='d-flex' style='height: 20px;'></div>
-
+                            <?php foreach ($ratings as $rating) {
+                                if ($rating['id_product'] == $id_product) { ?>
+                                    <p class='card-text h5 pb-4' data-note="<?= $rating['rating'] ?>">Note <?= number_format($rating['rating'], 2) ?>/5</p>
+                                <?php } else { ?>
+                                    <p class='card-text h5 pb-4' data-note="0">Aucune note</p>
+                            <?php }
+                            } ?>
                         </div>
                         <div class='d-flex' style='height: 20px;'></div>
                         <hr>
@@ -93,7 +83,7 @@
                             <div class='d-flex' style='height: 20px;'></div>
                             <p class='h3 text-dark'>Commentaire</p>
                             <div class='d-flex' style='height: 20px;'></div>
-                            
+
                         </div>
 
                         <a href="" class="btn btn-primary btn-lg py-4">Ajouter au panier</a>

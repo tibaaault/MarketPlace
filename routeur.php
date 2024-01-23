@@ -4,6 +4,12 @@ class Routeur
 {
     public function route($uri)
     {
+        if (isset($_SESSION['id'])) {
+            $controller = new Seller();
+            $controller->isSeller();
+        }
+
+
         switch ($uri) {
             case '/product':
                 $controller = new Product();
@@ -48,6 +54,14 @@ class Routeur
             case '/conversation':
                 $controller = new Message();
                 $controller->displayConversation();
+                break;
+            case '/signup':
+                $controller = new User();
+                $controller->signup();
+                break;
+            case '/signin':
+                $controller = new User();
+                $controller->signin();
                 break;
             default:
                 $controller = new HomePage();

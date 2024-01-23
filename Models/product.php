@@ -1,5 +1,7 @@
 <?php
 
+// class Product {
+
 
 function Connexion()
 {
@@ -148,3 +150,4 @@ function RatingProduct()
     return $rating;
 }
 
+// }

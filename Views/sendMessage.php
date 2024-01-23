@@ -7,8 +7,10 @@
     <style>
         .message-container {
             min-height: 500px;
-            max-height: 500px; /* Set a specific height for the message container */
-            overflow-y: auto; /* Enable vertical scrolling */
+            max-height: 500px;
+            /* Set a specific height for the message container */
+            overflow-y: auto;
+            /* Enable vertical scrolling */
         }
     </style>
 </head>
@@ -33,22 +35,40 @@
             <div class="message-container">
                 <?php
                 foreach ($messages as $message) {
+                    if (isset($_SESSION['isSeller']) && $_SESSION['isSeller'] == 0) {
+                        $id_buyer = $_SESSION['id'];
+                        $id_seller = $product[0]['seller_id'];
+                    } elseif (isset($_SESSION['isSeller']) && $_SESSION['isSeller'] == 1) {
+                        $id_seller = $product[0]['seller_id'];
+                        $id_buyer = $messages[0]['message_from'];
+                    }
+                    if (isset($_SESSION['isSeller']) && $_SESSION['isSeller'] == 0) {
                 ?>
-                    <div class="col-xl-12 col-sm <?= ($message["message_from"] === $id_buyer) ? 'text-right d-flex justify-content-end' : 'text-left d-flex justify-content-start' ?>">
-                        <div class="col-6 mt-2 <?= ($message["message_from"] === $id_buyer) ? 'bg-success text-right d-flex justify-content-end' : 'bg-secondary text-left d-flex justify-content-start' ?>  p-2 rounded">
-                            <div class="<?= ($message["message_from"] === $id_buyer) ? ' text-white' : '' ?>">
-                                <p class='lead'><?=  stripslashes($message['message']) ?></p>
+                        <div class="col-xl-12 col-sm <?= ($message["message_from"] === $id_buyer) ? 'text-right d-flex justify-content-end' : 'text-left d-flex justify-content-start' ?>">
+                            <div class="col-6 mt-2 <?= ($message["message_from"] === $id_buyer) ? 'bg-success text-right d-flex justify-content-end' : 'bg-secondary text-left d-flex justify-content-start' ?>  p-2 rounded">
+                                <div class="<?= ($message["message_from"] === $id_buyer) ? ' text-white' : '' ?>">
+                                    <p class='lead'><?= stripslashes($message['message']) ?></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <?php
+                    <?php } elseif (isset($_SESSION['isSeller']) && $_SESSION['isSeller'] == 1) {
+                    ?>
+                        <div class="col-xl-12 col-sm <?= ($message["message_from"] === $id_seller) ? 'text-right d-flex justify-content-end' : 'text-left d-flex justify-content-start' ?>">
+                            <div class="col-6 mt-2 <?= ($message["message_from"] === $id_seller) ? 'bg-success text-right d-flex justify-content-end' : 'bg-secondary text-left d-flex justify-content-start' ?>  p-2 rounded">
+                                <div class="<?= ($message["message_from"] === $id_seller) ? ' text-white' : '' ?>">
+                                    <p class='lead'><?= stripslashes($message['message']) ?></p>
+                                </div>
+                            </div>
+                        </div>
+                <?php }
                 }
                 ?>
             </div>
         </div>
         <div class="col-xl-10 col-sm mx-auto text-center ">
             <form action="/sendMessage" method="post">
-                <input type="hidden" name="id_seller" value="<?= $product[0]['seller_id'] ?>" />
+                <input type="hidden" name="id_seller" value="<?= $id_seller ?>" />
+                <input type="hidden" name="id_buyer" value="<?= $id_buyer ?>" />
                 <input type="hidden" name="id_product" value="<?= $product[0]['product_id'] ?>" />
                 <textarea class="form-control border border-primary" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
                 <div class="d-flex" style="height: 20px;"></div>

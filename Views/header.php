@@ -22,12 +22,17 @@
                 <!-- Ajouter condition d'affichage
                 Si la personne connectée est un vendeur (son rôle est à 1) alors afficher 'Ajouter un produit'
                 sinon le cacher -->
-                <li class="nav-item">
-                    <span class="h4"><a class="nav-link" href="/newProduct">Ajouter un produit</a></span>
-                </li>
-                <li class="nav-item">
-                    <span class="h4"><a class="nav-link" href="/displaySellerProducts">Mes produit</a></span>
-                </li>
+                <?php
+                if (isset($_SESSION['isSeller']) && $_SESSION['isSeller'] == 1) {
+                ?>
+                        <li class="nav-item">
+                            <span class="h4"><a class="nav-link" href="/newProduct">Ajouter un produit</a></span>
+                        </li>
+                        <li class="nav-item">
+                            <span class="h4"><a class="nav-link" href="/displaySellerProducts">Mes produit</a></span>
+                        </li>
+                <?php }
+                ?>
                 <!-- Jusqu'à ici -->
             </ul>
         </div>
@@ -37,19 +42,19 @@
             <!-- Icon -->
             <a class="text-reset me-3" href="#">
                 <i class="fas fa-shopping-cart fa-xl"></i>
-                
+
             </a>
             <a class="text-reset me-3" href="/conversation">
                 <i class="fas fa-envelope fa-xl"></i>
             </a>
             <!-- Avatar -->
             <div class="dropdown">
-                <a data-mdb-dropdown-init class="dropdown-toggle d-flex align-items-center hidden-arrow" href="#" id="navbarDropdownMenuAvatar" role="button" aria-expanded="false">
+                <a data-mdb-dropdown-init class="dropdown-toggle d-flex align-items-center hidden-arrow" href="/signin" id="navbarDropdownMenuAvatar" role="button" aria-expanded="false">
                     <img src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp" class="rounded-circle" height="50" alt="Black and White Portrait of a Man" loading="lazy" />
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
                     <li>
-                        <a class="dropdown-item" href="#">My profile</a>
+                        <a class="dropdown-item" href="/signin">My profile</a>
                     </li>
                     <li>
                         <a class="dropdown-item" href="#">Settings</a>

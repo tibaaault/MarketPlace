@@ -16,3 +16,20 @@ function getSeller($id_seller)
 
     return $seller;
 }
+
+function getTypeUser($id)
+{
+    $db = Connexion();
+    try {
+        $statement = $db->prepare("SELECT role FROM user WHERE id = :id");
+        $statement->execute(array(
+            'id' => $id
+        ));
+        $isSeller = $statement->fetchAll(PDO::FETCH_ASSOC);
+      
+    } catch (Exception $e) {
+        die('Erreur : ' . $e->getMessage());
+    }
+
+   return $isSeller;
+}
