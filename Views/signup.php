@@ -1,3 +1,20 @@
+<?php
+
+function isLoggedIn() {
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    return isset($_SESSION['id']);
+}
+
+if (isLoggedIn()) {
+    // session_destroy();
+    header('Location: /');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +28,15 @@
         .form-check-input[type=radio]:checked:after {
             left: 10px;
         }
+        .highlighted {
+            border: 1px solid red;
+        }
     </style>
 </head>
 <body>
 
 <div class="container mt-5">
+    <h1>Inscription</h1>
     <form id="registrationForm">
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -62,19 +83,21 @@
             <label for="siret">SIRET</label>
             <input type="text" class="form-control" id="siret" name="siret">
         </div>
+        <div><a href="/signin">Déjà inscrit ?</a></div><br>
+        <p id="errMsg"></p>
         <button type="submit" class="btn btn-primary">S'inscrire</button>
     </form>
 </div>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-        var roleInputs = document.querySelectorAll('input[name="role"]');
-        var additionalFields = document.querySelectorAll('.additional-fields');
+    document.addEventListener("DOMContentLoaded", () => {
+        let roleInputs = document.querySelectorAll('input[name="role"]');
+        let additionalFields = document.querySelectorAll('.additional-fields');
 
-        roleInputs.forEach(function (roleInput) {
-            roleInput.addEventListener("change", function () {
-		additionalFields.forEach(function (field) {
-                    if (roleInput.value === 'seller') {
+        roleInputs.forEach((roleInput) => {
+            roleInput.addEventListener("change", () => {
+                additionalFields.forEach((field) => {
+                    if (roleInput.value === "seller") {
                         field.style.display = 'block';
                     } else {
                         field.style.display = 'none';
@@ -85,9 +108,64 @@
 
         document.getElementById('registrationForm').addEventListener("submit", function (e) {
             e.preventDefault();
-            // Ajoutez ici la logique pour traiter le formulaire
-            console.log(new FormData(this));
+
+            let formData = new FormData(this);
+            let role = formData.get('role');
+            
+            let requiredFields = [];
+            if (role === "buyer") {
+                requiredFields = ['firstName', 'lastName', 'email', 'password', 'role'];
+            } else if (role === "seller") {
+                requiredFields = ['firstName', 'lastName', 'email', 'password', 'role', 'address', 'facAddress', 'businessName', 'siret'];
+            } else {
+                console.log('Rôle non valide.');
+                return;
+            }
+
+            resetFieldHighlight();
+
+            for (let field of requiredFields) {
+                if (!formData.get(field)) {
+                    highlightField(field);
+                }
+            }
+
+            if (document.querySelectorAll('.highlighted').length > 0) return;
+
+            let fetchOptions = {
+                method: 'POST',
+                body: formData,
+            };
+
+            fetch("/signup", fetchOptions)
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Réponse du serveur :', data);
+                    if (data.success) {
+                        window.location = "/signin";
+                    } else {
+                        let errMsg = document.querySelector("#errMsg");
+                        errMsg.innerText = data.message;
+                        setTimeout(() => errMsg.innerText = "", 3000);
+                    }
+                })
+                .catch(error => console.error('Erreur lors de l\'envoi de la requête :', error));
         });
+
+        const highlightField = (fieldName) => {
+            let field = document.querySelector('[name="' + fieldName + '"]');
+            if (field) {
+                field.classList.add('highlighted');
+            }
+        }
+
+        const resetFieldHighlight = () => {
+            let highlightedFields = document.querySelectorAll('.highlighted');
+            highlightedFields.forEach((field) => {
+                field.classList.remove('highlighted');
+            });
+        }
+
     });
 </script>
 </body>

@@ -42,9 +42,25 @@ class Routeur
                 $controller->signup();
                 break;
             case '/signin':
-                    $controller = new User();
-                    $controller->signin();
-                    break;
+                $controller = new User();
+                $controller->signin();
+                break;
+            case '/admin/user':
+                $controller = new Admin();
+                $controller->user();
+                break;
+            case '/admin/product':
+                $controller = new Admin();
+                $controller->product();
+                break;
+            case '/admin/review':
+                $controller = new Admin();
+                $controller->review();
+                break;
+            case '/admin/purchase':
+                $controller = new Admin();
+                $controller->purchase();
+                break;
             default:
                 $controller = new HomePage();
                 $controller->displayHomePage();

@@ -21,21 +21,29 @@ class User
     }
 
     private function handleSignup() {
-        // Validation des données du formulaire
-        $username = $_POST['username'];
+        $firstName = $_POST['firstName'];
+        $lastName = $_POST['lastName'];
+        $email = $_POST['email'];
         $password = $_POST['password'];
+        $role = $_POST['role'];
+        $address = $_POST['address'];
+        $facAddress = $_POST['facAddress'];
+        $businessName = $_POST['businessName'];
+        $siret = $_POST['siret'];
 
         try {
-            // Appeler la fonction du modèle pour créer un nouvel utilisateur
-            $this->userModel->createUser($username, $password);
+            $this->userModel->createUser($firstName, $lastName, $email, $password, $role, $address, $facAddress, $businessName, $siret);
 
-            // Rediriger vers la page de connexion (ou afficher un message de succès)
-            header('Location: login.php');
+            $response = array('success' => true);
+            header('Content-Type: application/json');
+            echo json_encode($response);
             exit;
         } catch (Exception $e) {
-            // En cas d'erreur, afficher un message d'erreur
             $error = $e->getMessage();
-            require_once 'app/views/register.php';
+            $response = array('success' => false, 'message' => $error);
+            header('Content-Type: application/json');
+            echo json_encode($response);
+            exit;
         }
     }
 
@@ -49,21 +57,22 @@ class User
     }
 
     private function handleSignin() {
-        // Validation des données du formulaire
-        $username = $_POST['username'];
+        $email = $_POST['email'];
         $password = $_POST['password'];
 
         try {
-            // Appeler la fonction du modèle pour créer un nouvel utilisateur
-            $this->userModel->createUser($username, $password);
+            $this->userModel->login($email, $password);
 
-            // Rediriger vers la page de connexion (ou afficher un message de succès)
-            header('Location: login.php');
+            $response = array('success' => true);
+            header('Content-Type: application/json');
+            echo json_encode($response);
             exit;
         } catch (Exception $e) {
-            // En cas d'erreur, afficher un message d'erreur
             $error = $e->getMessage();
-            require_once 'app/views/register.php';
+            $response = array('success' => false, 'message' => $error);
+            header('Content-Type: application/json');
+            echo json_encode($response);
+            exit;
         }
     }
 
