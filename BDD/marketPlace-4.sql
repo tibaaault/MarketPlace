@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : mar. 23 jan. 2024 à 01:08
+-- Généré le : mar. 23 jan. 2024 à 08:11
 -- Version du serveur : 5.7.39
 -- Version de PHP : 8.2.0
 
@@ -56,7 +56,8 @@ INSERT INTO `message` (`id_message`, `message`, `date_send`, `message_from`, `me
 (17, 'Bonjour', '2024-01-23', 1, 5, 5),
 (18, 'Vous n\\\'avez pas répondu à ma question', '2024-01-23', 5, 1, 5),
 (19, 'Oui, il est neuf\r\n', '2024-01-23', 1, 5, 5),
-(22, 'Avez vous besoin de plus d\\\'informations ?', '2024-01-23', 1, 5, 5);
+(22, 'Avez vous besoin de plus d\\\'informations ?', '2024-01-23', 1, 5, 5),
+(23, 'Oui pas de soucis', '2024-01-23', 1, 2, 8);
 
 -- --------------------------------------------------------
 
@@ -83,7 +84,7 @@ INSERT INTO `product` (`id_product`, `name`, `price`, `type`, `img_url`, `descri
 (2, 'Samsung Galaxy Tab A9+', 239, 'Digital', 'samsung-galaxy-tab-a9+.png', 'Marque	SAMSUNG\r\nNom de modèle	Galaxy Tab A9+\r\nTaille de l\'écran 11 Pouces\r\nRésolution d\'affichage maximale	1920 x 1200 Pixels\r\nSystème d\'exploitation Android 13, Samsung One UI 5.1.1\r\nCouleur	Argent\r\nTaille de la mémoire RAM installée 4 Go\r\nAnnée du modèle	2023\r\nPoids de l\'article 480 Grammes', 1),
 (5, 'Google Pixel 6 Pro', 950, 'Digital', 'google-pixel-6-pro.png', 'Marque	GOOGLE\r\nModèle Pixel 6 Pro\r\nTaille de l\'écran 6.7 Pouces\r\nRésolution d\'affichage maximale 1440 x 3120 Pixels\r\nSystème d\'exploitation Android 12\r\nCouleur	Noir\r\nMémoire RAM installée 8 Go\r\nAnnée du modèle	2023\r\nPoids de l\'article 210 Grammes', 1),
 (6, 'Dell XPS 13', 1299, 'Digital', 'dell-xps-13.png', 'Marque	DELL\r\nModèle XPS 13\r\nTaille de l\'écran 13.4 Pouces\r\nRésolution d\'affichage maximale 3840 x 2400 Pixels\r\nProcesseur Intel Core i7\r\nMémoire RAM installée 16 Go\r\nStockage SSD 512 Go\r\nAnnée du modèle	2023\r\nPoids de l\'article 1.2 Kilogrammes', 1),
-(7, 'Sony Alpha a7 IV', 1999.99, 'Digital', 'sony-alpha-a7-iv.png', 'Marque	SONY\r\nModèle Alpha a7 IV\r\nType de capteur CMOS\r\nRésolution du capteur 33 Megapixels\r\nEnregistrement vidéo 4K UHD\r\nStabilisation d\'image intégrée\r\nAnnée du modèle	2023\r\nPoids de l\'article 657 Grammes', 1),
+(7, 'Sony Alpha a7 IV', 1990.99, 'Digital', 'sony-alpha-a7-iv.png', 'Marque	SONY\r\nModèle Alpha a7 IV\r\nType de capteur CMOS\r\nRésolution du capteur 33 Megapixels\r\nEnregistrement vidéo 4K UHD\r\nStabilisation d\'image intégrée\r\nAnnée du modèle	2023\r\nPoids de l\'article 657 Grammes', 1),
 (8, 'Apple AirPods Pro', 249.99, 'Digital', 'apple-airpods-pro.png', 'Marque	APPLE\r\nModèle AirPods Pro\r\nType d\'écouteurs Intra-auriculaire\r\nAutonomie de la batterie jusqu\'à 4.5 heures\r\nRéduction du bruit active\r\nÉtanche IPX4\r\nAnnée du modèle	2023', 1),
 (9, 'ASUS ROG Swift PG279Q', 699, 'Digital', 'asus-rog-swift-pg279q.png', 'Marque	ASUS\r\nModèle ROG Swift PG279Q\r\nTaille de l\'écran 27 Pouces\r\nRésolution d\'affichage maximale 2560 x 1440 Pixels\r\nTaux de rafraîchissement 165 Hz\r\nTechnologie G-Sync\r\nAnnée du modèle	2023\r\nPoids de l\'article 7 Kilogrammes', 1),
 (10, 'Nintendo Switch OLED', 349.99, 'Digital', 'nintendo-switch-oled.png', 'Marque	NINTENDO\r\nModèle Switch OLED\r\nÉcran OLED 7 Pouces\r\nStockage interne 64 Go\r\nMode téléviseur, portable et sur table\r\nJoy-Cons amovibles\r\nAnnée du modèle	2023\r\nPoids de l\'article 320 Grammes', 1),
@@ -144,7 +145,9 @@ INSERT INTO `review` (`id_review`, `rating`, `comment`, `date_review`, `id_user`
 (3, 5, 'RAS !', '2024-01-23', 5, 8),
 (6, 4, 'Très belle qualité d\\\'image', '2024-01-23', 5, 7),
 (7, 5, 'Mon fils va être content !', '2024-01-23', 5, 10),
-(8, 1, 'Contrefaçon', '2024-01-23', 5, 22);
+(8, 1, 'Contrefaçon', '2024-01-23', 5, 22),
+(9, 5, 'Fidèle à la description', '2024-01-23', 5, 1),
+(10, 5, 'RAS', '2024-01-23', 0, 2);
 
 -- --------------------------------------------------------
 
@@ -170,8 +173,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `name`, `firstname`, `role`, `address`, `fac_address`, `business_name`, `siret`) VALUES
+(0, 'admin@myges.fr', '$2y$10$gE4RnPZZ0FPKi2JnNDJqLeTMXEOn5rxT9Nl..atM.n/uVPzjo.Dyi', 'Administrateur', 'Administrateur', 0, 'Rue de Lille', '', '', ''),
 (1, 'troelstrate2@myges.fr', '$2y$10$REywLSnYn4kDK/YkeB58.eM.FM2ybpqynh2UAYkUxPhR.1E8vbZae', 'Thibault', 'Roelstrate', 1, NULL, NULL, NULL, NULL),
-(2, 'customer@gmail.com', 'test', 'Customer', 'ManyThings', 0, NULL, NULL, NULL, NULL),
+(2, 'customer@gmail.com', 'test', 'Customer', 'ManyThings', 0, 'Lille', '', '', ''),
 (3, 'Antoine@gmail.com', 'password', 'Antoine', 'Antoine', 0, NULL, NULL, NULL, NULL),
 (4, 'thibault.roelstrate@gmail.com', '$2y$10$urWj2lvpQI4pPUpmiUR6PePLLz5ugNc9K7iZbtdMfk1S0lc1.ym/K', 'Roelstrate', 'Thibault', 1, '233 rue du clos du chemin vert', '233 rue du clos du chemin vert', 'UNIS', '2312433456'),
 (5, 'customer@myges.fr', '$2y$10$REywLSnYn4kDK/YkeB58.eM.FM2ybpqynh2UAYkUxPhR.1E8vbZae', 'Customer', 'Eric', 0, 'Rue de Lille', '', '', '');
@@ -232,7 +236,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT pour la table `product`
@@ -250,13 +254,13 @@ ALTER TABLE `purchase`
 -- AUTO_INCREMENT pour la table `review`
 --
 ALTER TABLE `review`
-  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Contraintes pour les tables déchargées
