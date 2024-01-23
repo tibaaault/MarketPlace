@@ -25,6 +25,7 @@ class Admin
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $data = $this->adminModel->getUser();
             $read = false;
+            include 'Views/header.php';
             include 'Views/admin.php';
         } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->adminModel->setUser(json_decode($_POST['values'], true));
@@ -36,6 +37,7 @@ class Admin
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $data = $this->adminModel->getProduct();
             $read = false;
+            include 'Views/header.php';
             include 'Views/admin.php';
         } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->adminModel->setProduct(json_decode($_POST['values'], true));
@@ -47,6 +49,7 @@ class Admin
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $data = $this->adminModel->getReview();
             $read = false;
+            include 'Views/header.php';
             include 'Views/admin.php';
         } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->adminModel->setReview(json_decode($_POST['values'], true));
@@ -58,6 +61,7 @@ class Admin
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $data = $this->adminModel->getPurchase();
             $read = true;
+            include 'Views/header.php';
             include 'Views/admin.php';
         }
     }
