@@ -1,3 +1,11 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.0
+-- https://www.phpmyadmin.net/
+--
+-- Hôte : localhost:8889
+-- Généré le : mar. 23 jan. 2024 à 01:08
+-- Version du serveur : 5.7.39
+-- Version de PHP : 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,7 +51,12 @@ INSERT INTO `message` (`id_message`, `message`, `date_send`, `message_from`, `me
 (8, 'Oui, la livraison est gratuite pour ce produit.', '2024-01-22', 1, 2, 8),
 (9, 'Pouvez-vous me donner plus d\'informations sur la garantie ?', '2024-01-22', 2, 1, 8),
 (10, 'Pouvez vous me répondre pour l\\\'article svp ?', '2024-01-22', 2, 1, 8),
-(15, 'Bonjour, quels sont les délais de livraison ?', '2024-01-22', 2, 3, 22);
+(15, 'Bonjour, quels sont les délais de livraison ?', '2024-01-22', 2, 3, 22),
+(16, 'Bonjour, est-il neuf ?', '2024-01-22', 5, 1, 5),
+(17, 'Bonjour', '2024-01-23', 1, 5, 5),
+(18, 'Vous n\\\'avez pas répondu à ma question', '2024-01-23', 5, 1, 5),
+(19, 'Oui, il est neuf\r\n', '2024-01-23', 1, 5, 5),
+(22, 'Avez vous besoin de plus d\\\'informations ?', '2024-01-23', 1, 5, 5);
 
 -- --------------------------------------------------------
 
@@ -126,8 +139,12 @@ CREATE TABLE `review` (
 --
 
 INSERT INTO `review` (`id_review`, `rating`, `comment`, `date_review`, `id_user`, `id_product`) VALUES
-(1, 5, NULL, '2024-01-22', 2, 8),
-(2, 3, NULL, '2024-01-22', 2, 8);
+(1, 5, 'Très bonne qualité de son !', '2024-01-22', 2, 8),
+(2, 3, 'Ils m\'ont l\'air fragile', '2024-01-22', 3, 8),
+(3, 5, 'RAS !', '2024-01-23', 5, 8),
+(6, 4, 'Très belle qualité d\\\'image', '2024-01-23', 5, 7),
+(7, 5, 'Mon fils va être content !', '2024-01-23', 5, 10),
+(8, 1, 'Contrefaçon', '2024-01-23', 5, 22);
 
 -- --------------------------------------------------------
 
@@ -153,9 +170,11 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `name`, `firstname`, `role`, `address`, `fac_address`, `business_name`, `siret`) VALUES
-(1, 'troelstrate2@myges.fr', 'tibo', 'Thibault', 'Roelstrate', 1, NULL, NULL, NULL, NULL),
+(1, 'troelstrate2@myges.fr', '$2y$10$REywLSnYn4kDK/YkeB58.eM.FM2ybpqynh2UAYkUxPhR.1E8vbZae', 'Thibault', 'Roelstrate', 1, NULL, NULL, NULL, NULL),
 (2, 'customer@gmail.com', 'test', 'Customer', 'ManyThings', 0, NULL, NULL, NULL, NULL),
-(3, 'Antoine@gmail.com', 'password', 'Antoine', 'Antoine', 0, NULL, NULL, NULL, NULL);
+(3, 'Antoine@gmail.com', 'password', 'Antoine', 'Antoine', 0, NULL, NULL, NULL, NULL),
+(4, 'thibault.roelstrate@gmail.com', '$2y$10$urWj2lvpQI4pPUpmiUR6PePLLz5ugNc9K7iZbtdMfk1S0lc1.ym/K', 'Roelstrate', 'Thibault', 1, '233 rue du clos du chemin vert', '233 rue du clos du chemin vert', 'UNIS', '2312433456'),
+(5, 'customer@myges.fr', '$2y$10$REywLSnYn4kDK/YkeB58.eM.FM2ybpqynh2UAYkUxPhR.1E8vbZae', 'Customer', 'Eric', 0, 'Rue de Lille', '', '', '');
 
 --
 -- Index pour les tables déchargées
@@ -213,7 +232,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_message` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT pour la table `product`
@@ -231,13 +250,13 @@ ALTER TABLE `purchase`
 -- AUTO_INCREMENT pour la table `review`
 --
 ALTER TABLE `review`
-  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_review` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Contraintes pour les tables déchargées
