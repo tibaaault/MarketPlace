@@ -25,15 +25,23 @@
                 <?php
                 if (isset($_SESSION['isSeller']) && $_SESSION['isSeller'] == 1) {
                 ?>
-                        <li class="nav-item">
-                            <span class="h4"><a class="nav-link" href="/newProduct">Ajouter un produit</a></span>
-                        </li>
-                        <li class="nav-item">
-                            <span class="h4"><a class="nav-link" href="/displaySellerProducts">Mes produit</a></span>
-                        </li>
+                    <li class="nav-item">
+                        <span class="h4"><a class="nav-link" href="/newProduct">Ajouter un produit</a></span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="h4"><a class="nav-link" href="/displaySellerProducts">Mes produit</a></span>
+                    </li>
                 <?php }
                 ?>
                 <!-- Jusqu'à ici -->
+                <?php
+                if (isset($_SESSION['id']) && $_SESSION['id'] == 0) { ?>
+                    <li class="nav-item ms-4">
+                        <span class="h4"><a class="nav-link" href="/admin/user">PanelAdmin</a></span>
+                    </li>
+                <?php
+                }
+                ?>
             </ul>
         </div>
 
@@ -44,9 +52,17 @@
                 <i class="fas fa-shopping-cart fa-xl"></i>
 
             </a>
-            <a class="text-reset me-3" href="/conversation">
-                <i class="fas fa-envelope fa-xl"></i>
-            </a>
+            <?php
+            if (isset($_SESSION['id'])) {
+            ?>
+                <a class="text-reset me-3" href="/conversation">
+                    <i class="fas fa-envelope fa-xl"></i>
+                </a>
+            <?php } else { ?>
+                <a class="text-reset me-3" href="/signin">
+                    <i class="fas fa-envelope fa-xl"></i>
+                </a>
+            <?php } ?>
             <!-- Avatar -->
             <div class="dropdown">
                 <a data-mdb-dropdown-init class="dropdown-toggle d-flex align-items-center hidden-arrow" href="/signin" id="navbarDropdownMenuAvatar" role="button" aria-expanded="false">

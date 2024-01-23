@@ -8,10 +8,10 @@ function isLoggedIn() {
     return isset($_SESSION['id']);
 }
 
-if (isLoggedIn()) {
-    // session_destroy();
-    header('Location: /');
-}
+// if (isLoggedIn()) {
+//     // session_destroy();
+//     header('Location: /');
+// }
 
 ?>
 
@@ -29,6 +29,17 @@ if (isLoggedIn()) {
 </head>
 <body>
 
+<?php if (isLoggedIn()) { ?>
+    <div class="container">
+        <div class="col-xl-12 col-sm mx-auto text-center">
+            <h1>Vous êtes déjà connecté</h1>
+            <div class="d-flex" style="height:30px"></div>
+            <h1>Se déconnecter ?</h1>
+            <div class="d-flex" style="height:30px"></div>
+            <a href="/logout"><button type="button" class="btn btn-primary">Se déconnecter</button></a>
+        </div>
+    </div>
+<?php } else { ?>
 <div class="container mt-5">
     <form id="registrationForm">
         <div class="form-group">
@@ -44,6 +55,7 @@ if (isLoggedIn()) {
         <button type="submit" class="btn btn-primary">Se connecter</button>
     </form>
 </div>
+<?php } ?>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {

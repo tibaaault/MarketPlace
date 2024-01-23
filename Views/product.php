@@ -37,11 +37,21 @@
                                                 <input class="d-none" type="text" name="id_seller" value="<?= $value['seller_id'] ?>" />
                                                 <button type="submit" class='btn btn-primary btn-lg'>Afficher la page du vendeur</button>
                                             </form>
-                                            <form action="/goMP" method="post">
-                                                <input class="d-none" type="text" name="id_seller" value="<?= $value['seller_id'] ?>" />
-                                                <input class="d-none" type="text" name="id_product" value="<?= $id_product ?>" />
-                                                <button type="submit" class='btn btn-primary btn-lg'>Envoyer un message au vendeur</button>
-                                            </form>
+                                            <div class='d-flex' style='height: 20px;'></div>
+                                            <?php if (!isset($_SESSION['id']) && (!isset($_SESSION['isSeller']))) { ?>
+                                                <a href="/signin">
+                                                    <input class="d-none" type="text" name="id_seller" value="<?= $value['seller_id'] ?>" />
+                                                    <input class="d-none" type="text" name="id_product" value="<?= $id_product ?>" />
+                                                    <button type="submit" class='btn btn-primary btn-lg'>Envoyer un message au vendeur</button>
+                                                </a>
+                                            <?php } elseif ($_SESSION['isSeller'] == 0) { ?>
+                                                <form action="/goMP" method="post">
+                                                    <input class="d-none" type="text" name="id_seller" value="<?= $value['seller_id'] ?>" />
+                                                    <input class="d-none" type="text" name="id_product" value="<?= $id_product ?>" />
+                                                    <button type="submit" class='btn btn-primary btn-lg'>Envoyer un message au vendeur</button>
+                                                </form>
+                                            <?php } ?>
+
                                         </div>
                                     </div>
                                 </div>
@@ -112,40 +122,42 @@
                         <?php }
                         ?>
                         <div class='d-flex' style='height: 50px;'></div>
-                        <form action="/addComment" method="post">
-                            <div class="col-xl-11 col-sm mx-auto">
-                                <div class="row">
-                                    <div class="col-xl-5">
-                                        <p class='h3 text-dark'>Ajouter un commentaire</p>
-                                    </div>
-                                    <div class="col-xl-7 col-sm">
-                                        <div class="row">
-                                            <div class="col-xl-4 col-sm">
-                                                <select class="form-select" name="rating" aria-label="Default select example" required>
-                                                    <option selected>Note</option>
-                                                    <option value="1">1/5</option>
-                                                    <option value="2">2/5</option>
-                                                    <option value="3">3/5</option>
-                                                    <option value="4">4/5</option>
-                                                    <option value="5">5/5</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-xl-8 col-sm">
-                                                <textarea class="form-control" name="comment" id="exampleFormControlTextarea1" rows="3" placeholder="Votre commentaire" required></textarea>
+                        <?php if (isset($_SESSION['id'])) { ?>
+                            <form action="/addComment" method="post">
+                                <div class="col-xl-11 col-sm mx-auto">
+                                    <div class="row">
+                                        <div class="col-xl-5">
+                                            <p class='h3 text-dark'>Ajouter un commentaire</p>
+                                        </div>
+                                        <div class="col-xl-7 col-sm">
+                                            <div class="row">
+                                                <div class="col-xl-4 col-sm">
+                                                    <select class="form-select" name="rating" aria-label="Default select example" required>
+                                                        <option selected>Note</option>
+                                                        <option value="1">1/5</option>
+                                                        <option value="2">2/5</option>
+                                                        <option value="3">3/5</option>
+                                                        <option value="4">4/5</option>
+                                                        <option value="5">5/5</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-xl-8 col-sm">
+                                                    <textarea class="form-control" name="comment" id="exampleFormControlTextarea1" rows="3" placeholder="Votre commentaire" required></textarea>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class='d-flex' style='height: 20px;'></div>
-                            <div class="col-xl-11 col-sm mx-auto">
-                                <input class="d-none" type="text" name="id_product" value="<?= $id_product ?>" />
-                                <div class="col-xl-7 col-s mx-auto text-center">
-                                    <button type="submit" class='btn btn-primary btn-lg'>Envoyer</button>
+                                <div class='d-flex' style='height: 20px;'></div>
+                                <div class="col-xl-11 col-sm mx-auto">
+                                    <input class="d-none" type="text" name="id_product" value="<?= $id_product ?>" />
+                                    <div class="col-xl-7 col-s mx-auto text-center">
+                                        <button type="submit" class='btn btn-primary btn-lg'>Envoyer</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                        <div class='d-flex' style='height: 50px;'></div>
+                            </form>
+                            <div class='d-flex' style='height: 50px;'></div>
+                        <?php } ?>
                         <a href="" class="btn btn-primary btn-lg py-4">Ajouter au panier</a>
                     </div>
                     <div class='d-flex' style='height: 50px;'></div>

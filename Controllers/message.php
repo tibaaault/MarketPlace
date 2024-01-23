@@ -8,7 +8,6 @@ class Message
         include_once 'Models/message.php';
         if (isset($_POST['id_product']) && isset($_POST['id_seller'])) {
             if (isset($_SESSION['isSeller']) && $_SESSION['isSeller'] == 0) {
-
                 $id_product = $_POST['id_product'];
                 $id_seller = $_POST['id_seller'];
                 $id_buyer = $_SESSION['id'];
@@ -18,7 +17,6 @@ class Message
                 include 'Views/header.php';
                 include 'Views/sendMessage.php';
             } elseif (isset($_SESSION['isSeller']) && $_SESSION['isSeller'] == 1) {
-
                 $id_product = $_POST['id_product'];
                 $id_seller = $_POST['id_seller'];
                 $product = OneProductByID($id_product);
