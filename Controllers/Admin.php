@@ -11,7 +11,20 @@ class Admin
         $this->adminModel = new AdminModel();
     }
 
+    private function checkAdmin() {
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+    
+        if (!isset($_SESSION['id']) || $_SESSION['id'] != 0) {
+            header('Location: /');
+        }
+    }
+    
+    
+
     public function user() {
+        $this->checkAdmin();
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $data = $this->adminModel->getUser();
             $read = false;
@@ -22,6 +35,7 @@ class Admin
     }
     
     public function product() {
+        $this->checkAdmin();
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $data = $this->adminModel->getProduct();
             $read = false;
@@ -32,6 +46,7 @@ class Admin
     }
 
     public function review() {
+        $this->checkAdmin();
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $data = $this->adminModel->getReview();
             $read = false;
@@ -42,6 +57,7 @@ class Admin
     }
 
     public function purchase() {
+        $this->checkAdmin();
         if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $data = $this->adminModel->getPurchase();
             $read = true;
