@@ -1,5 +1,4 @@
-# MarketPlace
-# Nom du Projet: MarketPlace XYZ
+# Projet : MarketPlace
 
 ## Auteurs:
 - [LAHOUAZI Milia](https://github.com/melialhz)
