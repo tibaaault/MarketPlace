@@ -4,7 +4,7 @@
 - [LAHOUAZI Milia](https://github.com/melialhz)
 - [GALIEGUE Enzo](https://github.com/Enzo0011)
 - [Roelstrate Thibault](https://github.com/tibaaault)
-- [Zackariya](https://github.com/ZakariyaOSK)
+- [Zakariya](https://github.com/ZakariyaOSK)
 
 ## Description du Projet:
 
