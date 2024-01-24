@@ -3,7 +3,7 @@
 ## Auteurs:
 - [LAHOUAZI Milia](https://github.com/melialhz)
 - [GALIEGUE Enzo](https://github.com/Enzo0011)
-- [Tibault](https://github.com/tibaaault)
+- [Thibault Roelstrate](https://github.com/tibaaault)
 - [Zackariya](https://github.com/ZakariyaOSK)
 
 ## Description du Projet:
