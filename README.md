@@ -3,8 +3,8 @@
 ## Auteurs:
 - [LAHOUAZI Milia](https://github.com/melialhz)
 - [GALIEGUE Enzo](https://github.com/Enzo0011)
-- [Nom 3]
-- [Nom 4]
+- [Tibault](https://github.com/tibaaault)
+- [Zackariya](https://github.com/ZakariyaOSK)
 
 ## Description du Projet:
 
