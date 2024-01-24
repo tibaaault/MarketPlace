@@ -123,7 +123,8 @@
                         ?>
                         <div class='d-flex' style='height: 50px;'></div>
                         <?php if (isset($_SESSION['id'])) { ?>
-                            <!-- <form action="/addComment" method="post">
+
+                            <form action="/addComment" method="post">
                                 <div class="col-xl-11 col-sm mx-auto">
                                     <div class="row">
                                         <div class="col-xl-5">
@@ -132,14 +133,51 @@
                                         <div class="col-xl-7 col-sm">
                                             <div class="row">
                                                 <div class="col-xl-4 col-sm">
-                                                    <select class="form-select" name="rating" aria-label="Default select example" required>
-                                                        <option selected>Note</option>
-                                                        <option value="1">1/5</option>
-                                                        <option value="2">2/5</option>
-                                                        <option value="3">3/5</option>
-                                                        <option value="4">4/5</option>
-                                                        <option value="5">5/5</option>
-                                                    </select>
+                                                    <div class="rating" style='height: 50px;'>
+                                                        <input id="star5" name="rating" type="radio" value="5" class="radio-btn hide" />
+                                                        <label for="star5">☆</label>
+                                                        <input id="star4" name="rating" type="radio" value="4" class="radio-btn hide" />
+                                                        <label for="star4">☆</label>
+                                                        <input id="star3" name="rating" type="radio" value="3" class="radio-btn hide" />
+                                                        <label for="star3">☆</label>
+                                                        <input id="star2" name="rating" type="radio" value="2" class="radio-btn hide" />
+                                                        <label for="star2">☆</label>
+                                                        <input id="star1" name="rating" type="radio" value="1" class="radio-btn hide" />
+                                                        <label for="star1">☆</label>
+                                                        <div class="clear"></div>
+                                                        <style>
+                                                            .rating {
+                                                                unicode-bidi: bidi-override;
+                                                                direction: rtl;
+                                                            }
+
+                                                            .rating>label {
+                                                                display: inline-block;
+                                                                position: relative;
+                                                                width: 0.8em;
+                                                                font-size: 2rem;
+                                                                /* Taille des étoiles */
+                                                                color: #C5C5C5;
+                                                                /* Couleur par défaut des étoiles */
+                                                                cursor: pointer;
+                                                            }
+
+                                                            .rating>label:hover,
+                                                            .rating>label:hover~label,
+                                                            .rating>input.radio-btn:checked~label {
+                                                                color: #FFC107;
+                                                                /* Couleur des étoiles sélectionnées */
+                                                            }
+
+                                                            .radio-btn {
+                                                                display: none;
+                                                            }
+
+                                                            .clear {
+                                                                clear: both;
+                                                            }
+                                                        </style>
+                                                    </div>
                                                 </div>
                                                 <div class="col-xl-8 col-sm">
                                                     <textarea class="form-control" name="comment" id="exampleFormControlTextarea1" rows="3" placeholder="Votre commentaire" required></textarea>
@@ -155,74 +193,7 @@
                                         <button type="submit" class='btn btn-primary btn-lg'>Envoyer</button>
                                     </div>
                                 </div>
-                            </form> -->
-                            <form action="/addComment" method="post">
-                            <div class="col-xl-11 col-sm mx-auto">
-                                <div class="row">
-                                    <div class="col-xl-5">
-                                        <p class='h3 text-dark'>Ajouter un commentaire</p>
-                                    </div>
-                                    <div class="col-xl-7 col-sm">
-                                        <div class="row">
-                                            <div class="col-xl-4 col-sm">
-                                                <div class="rating" style='height: 50px;'>
-                                                    <input id="star5" name="rating" type="radio" value="5" class="radio-btn hide" />
-                                                    <label for="star5">☆</label>
-                                                    <input id="star4" name="rating" type="radio" value="4" class="radio-btn hide" />
-                                                    <label for="star4">☆</label>
-                                                    <input id="star3" name="rating" type="radio" value="3" class="radio-btn hide" />
-                                                    <label for="star3">☆</label>
-                                                    <input id="star2" name="rating" type="radio" value="2" class="radio-btn hide" />
-                                                    <label for="star2">☆</label>
-                                                    <input id="star1" name="rating" type="radio" value="1" class="radio-btn hide" />
-                                                    <label for="star1">☆</label>
-                                            <div class="clear"></div>
-                                                    <style>
-                                                    .rating {
-                                                    unicode-bidi: bidi-override;
-                                                    direction: rtl;
-                                                    }
-
-                                                    .rating > label {
-                                                    display: inline-block;
-                                                    position: relative;
-                                                    width: 0.8em;
-                                                    font-size: 2rem; /* Taille des étoiles */
-                                                    color: #C5C5C5; /* Couleur par défaut des étoiles */
-                                                    cursor: pointer;
-                                                    }
-
-                                                    .rating > label:hover,
-                                                    .rating > label:hover ~ label,
-                                                    .rating > input.radio-btn:checked ~ label {
-                                                    color: #FFC107; /* Couleur des étoiles sélectionnées */
-                                                    }
-
-                                                    .radio-btn {
-                                                    display: none;
-                                                    }
-
-                                                    .clear {
-                                                    clear: both;
-                                                    }
-                                                    </style>
-                                            </div>
-                                            </div>
-                                            <div class="col-xl-8 col-sm">
-                                                <textarea class="form-control" name="comment" id="exampleFormControlTextarea1" rows="3" placeholder="Votre commentaire" required></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class='d-flex' style='height: 20px;'></div>
-                            <div class="col-xl-11 col-sm mx-auto">
-                                <input class="d-none" type="text" name="id_product" value="<?= $id_product ?>" />
-                                <div class="col-xl-7 col-s mx-auto text-center">
-                                    <button type="submit" class='btn btn-primary btn-lg'>Envoyer</button>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
                             <div class='d-flex' style='height: 50px;'></div>
                         <?php } ?>
                         <a href="" class="btn btn-primary btn-lg py-4">Ajouter au panier</a>
@@ -245,7 +216,11 @@
             foreach ($productsSeller as $productsSeller => $value) {
                 if ($id_product == $value['product_id']) {
                     continue;
+                } elseif (empty($productsSeller)) {
+                    echo "<p class='h3'>Aucun autre article du vendeur</p>";
+                    break;
                 }
+
                 $value['price'] = str_replace('.', ',', $value['price']);
             ?>
                 <div class="col-xl-3 mb-5">
@@ -266,3 +241,6 @@
             ?>
         </div>
     </div>
+</body>
+
+</html>

@@ -2,25 +2,28 @@
 
 include_once 'Models/User.php';
 
-class User 
+class User
 {
 
     private $userModel;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->userModel = new UserModel();
     }
 
-    public function signup() {
+    public function signup()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->handleSignup();
+                $this->handleSignup();
         } else {
             include 'Views/header.php';
             include 'Views/signup.php';
         }
     }
 
-    private function handleSignup() {
+    private function handleSignup()
+    {
         $firstName = $_POST['firstName'];
         $lastName = $_POST['lastName'];
         $email = $_POST['email'];
@@ -47,7 +50,8 @@ class User
         }
     }
 
-    public function signin() {
+    public function signin()
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $this->handleSignin();
         } else {
@@ -56,7 +60,8 @@ class User
         }
     }
 
-    private function handleSignin() {
+    private function handleSignin()
+    {
         $email = $_POST['email'];
         $password = $_POST['password'];
 
@@ -76,10 +81,10 @@ class User
         }
     }
 
-    public function logout() {
+    public function logout()
+    {
         session_destroy();
         header('Location: /');
         exit;
     }
-
 }

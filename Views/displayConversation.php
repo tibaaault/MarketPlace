@@ -12,17 +12,26 @@
         <div class="col-xl-10 col-sm mx-auto text-center">
             <?php
             $displayedConversations = array(); // Tableau pour suivre les conversations déjà affichées
+            if (empty($conversation)) { ?>
+                <div class="col-xl-12">
+                   <div class="card shadow-lg col-sm border text-center">
+                       <div class="mx-auto text-center p-3">
+                           <p class='h4 text-center'>Vous n'avez pas encore de conversation en cours</p>
+                       </div>
+                   </div>
+                   <div class='d-flex' style='height: 20px;'></div>
+               </div>
+           <?php }
             foreach ($conversations as $conversation) {
+                
                 $productId = $conversation['id_product'];
-
-
                 // Vérifier si la conversation a déjà été affichée
                 if (!in_array($productId, $displayedConversations)) {
                     // Marquer la conversation comme affichée
                     $displayedConversations[] = $productId;
 
                     // Afficher la conversation
-            ?>
+                ?>
                     <form action="/goMP" method="post" style="cursor: pointer;" onclick="this.submit();">
                         <input class="d-none" type="text" name="id_product" value="<?= $conversation['id_product'] ?>" />
                         <input class="d-none" type="text" name="id_seller" value="<?= $conversation['id_seller'] ?>" />

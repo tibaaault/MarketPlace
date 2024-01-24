@@ -1,14 +1,20 @@
 <?php
 
-include_once 'Models/product.php';
+Class MessageModel {
+
+
+    private $db;
+
+    public function __construct() {
+        $this->db = Connexion::getInstance();
+    }
+
 
 function sendMessageBuyer($id_seller, $id_buyer, $message, $id_product)
 {
-    $db = Connexion();
-
     try {
         $message = addslashes($message);
-        $statement = $db->prepare("INSERT INTO message (message, date_send, message_from, message_to, id_product) VALUES (:message, NOW(), :id_buyer, :id_seller, :id_product)");
+        $statement = $this->db->prepare("INSERT INTO message (message, date_send, message_from, message_to, id_product) VALUES (:message, NOW(), :id_buyer, :id_seller, :id_product)");
         $statement->execute(array(
             'message' => $message,
             'id_buyer' => $id_buyer,
@@ -22,11 +28,10 @@ function sendMessageBuyer($id_seller, $id_buyer, $message, $id_product)
 
 function sendMessageSeller($id_seller, $id_buyer, $message, $id_product)
 {
-    $db = Connexion();
 
     try {
         $message = addslashes($message);
-        $statement = $db->prepare("INSERT INTO message (message, date_send, message_from, message_to, id_product) VALUES (:message, NOW(), :id_seller, :id_buyer, :id_product)");
+        $statement = $this->db->prepare("INSERT INTO message (message, date_send, message_from, message_to, id_product) VALUES (:message, NOW(), :id_seller, :id_buyer, :id_product)");
         $statement->execute(array(
             'message' => $message,
             'id_seller' => $id_seller,
@@ -39,9 +44,9 @@ function sendMessageSeller($id_seller, $id_buyer, $message, $id_product)
 }
 function getMessageBuyer($id_seller, $id_buyer, $id_product)
 {
-    $db = Connexion();
+
     try {
-        $statement = $db->prepare("SELECT * FROM message WHERE (message_to = :id_seller AND message_from = :id_buyer OR message_to = :id_buyer AND message_from = :id_seller ) AND id_product = :id_product");
+        $statement = $this->db->prepare("SELECT * FROM message WHERE (message_to = :id_seller AND message_from = :id_buyer OR message_to = :id_buyer AND message_from = :id_seller ) AND id_product = :id_product");
         $statement->execute(array(
             'id_seller' => $id_seller,
             'id_buyer' => $id_buyer,
@@ -56,16 +61,16 @@ function getMessageBuyer($id_seller, $id_buyer, $id_product)
 
 function getMessageSeller( $id_seller, $id_product )
 {
-    $db = Connexion();
+
     try {
-        $statementBuyer = $db->prepare("SELECT * FROM message WHERE message_to = :id_seller AND id_product = :id_product");
+        $statementBuyer = $this->db->prepare("SELECT * FROM message WHERE message_to = :id_seller AND id_product = :id_product");
         $statementBuyer->execute(array(
             'id_seller' => $id_seller,
             'id_product' => $id_product
         ));
         $message = $statementBuyer->fetchAll(PDO::FETCH_ASSOC);
         $id_buyer = $message[0]['message_from'];
-        $statement = $db->prepare("SELECT * FROM message WHERE (message_to = :id_seller AND message_from = :id_buyer OR message_to = :id_buyer AND message_from = :id_seller ) AND id_product = :id_product");
+        $statement = $this->db->prepare("SELECT * FROM message WHERE (message_to = :id_seller AND message_from = :id_buyer OR message_to = :id_buyer AND message_from = :id_seller ) AND id_product = :id_product");
         $statement->execute(array(
             'id_seller' => $id_seller,
             'id_buyer' => $id_buyer,
@@ -81,9 +86,9 @@ function getMessageSeller( $id_seller, $id_product )
 
 function getConversationBuyer($id_buyer)
 {
-    $db = Connexion();
+
     try {
-        $statement = $db->prepare("SELECT * FROM message INNER JOIN product ON message.id_product = product.id_product WHERE message_from = :id_buyer");
+        $statement = $this->db->prepare("SELECT * FROM message INNER JOIN product ON message.id_product = product.id_product WHERE message_from = :id_buyer");
         $statement->execute(array(
             'id_buyer' => $id_buyer
         ));
@@ -96,9 +101,9 @@ function getConversationBuyer($id_buyer)
 
 function getConversationSeller($id_seller)
 {
-    $db = Connexion();
+
     try {
-        $statement = $db->prepare("SELECT * FROM message INNER JOIN product ON message.id_product = product.id_product WHERE message_to = :id_seller");
+        $statement = $this->db->prepare("SELECT * FROM message INNER JOIN product ON message.id_product = product.id_product WHERE message_to = :id_seller");
         $statement->execute(array(
             'id_seller' => $id_seller
         ));
@@ -107,4 +112,6 @@ function getConversationSeller($id_seller)
         die('Erreur : ' . $e->getMessage());
     }
     return $messages;
+}
+
 }

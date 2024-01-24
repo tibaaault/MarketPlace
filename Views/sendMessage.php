@@ -70,7 +70,7 @@
                 <input type="hidden" name="id_seller" value="<?= $id_seller ?>" />
                 <input type="hidden" name="id_buyer" value="<?= $id_buyer ?>" />
                 <input type="hidden" name="id_product" value="<?= $product[0]['product_id'] ?>" />
-                <textarea class="form-control border border-primary" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control border border-primary" name="message" id="exampleFormControlTextarea1" rows="3" required></textarea>
                 <div class="d-flex" style="height: 20px;"></div>
                 <button type="submit" name="sendMessage" class="btn btn-primary">Envoyer</button>
             </form>

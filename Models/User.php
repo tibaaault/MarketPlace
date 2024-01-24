@@ -1,14 +1,14 @@
 <?php
+require_once 'dbConnect.php';
 
 class UserModel
 {
+
     private $db;
 
-    public function __construct()
-    {
-        $this->db = $this->connexion();
+    public function __construct() {
+        $this->db = Connexion::getInstance();
     }
-
     public function createUser($firstName, $lastName, $email, $password, $role, $address, $facAddress, $businessName, $siret)
     {
 
@@ -104,14 +104,4 @@ class UserModel
     }
 
 
-    private function connexion()
-    {
-        try {
-            // $db = new PDO("mysql:host=localhost:3306;dbname=marketPlace", "root", "root123");
-            $db = new PDO("mysql:host=localhost:8889;dbname=marketPlace", "root", "root");
-            return $db;
-        } catch (Exception $e) {
-            die('Erreur : ' . $e->getMessage());
-        }
-    }
 }

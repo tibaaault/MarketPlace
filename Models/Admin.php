@@ -5,7 +5,7 @@ class AdminModel
     private $db;
 
     public function __construct() {
-        $this->db = $this->connexion();
+        $this->db = Connexion::getInstance();
     }
 
     public function getUser() {
@@ -168,15 +168,4 @@ class AdminModel
         }
     }
 
-
-    private function connexion()
-    {
-        try {
-            // $db = new PDO("mysql:host=localhost:3306;dbname=marketPlace", "root", "root123");
-            $db = new PDO("mysql:host=localhost:8889;dbname=marketPlace", "root", "root");
-            return $db;
-        } catch (Exception $e) {
-            die('Erreur : ' . $e->getMessage());
-        }
-    }
 }

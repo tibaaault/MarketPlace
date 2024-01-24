@@ -1,11 +1,18 @@
 <?php
-include_once 'Models/product.php';
+
+class SellerModel {
+
+    private $db;
+
+    public function __construct() {
+        $this->db = Connexion::getInstance();
+    }
 
 function getSeller($id_seller)
 {
-    $db = Connexion();
+
     try {
-        $statement = $db->prepare("SELECT * FROM user WHERE id = :id_seller");
+        $statement = $this->db->prepare("SELECT * FROM user WHERE id = :id_seller");
         $statement->execute(array(
             'id_seller' => $id_seller
         ));
@@ -19,9 +26,9 @@ function getSeller($id_seller)
 
 function getTypeUser($id)
 {
-    $db = Connexion();
+
     try {
-        $statement = $db->prepare("SELECT role FROM user WHERE id = :id");
+        $statement = $this->db->prepare("SELECT role FROM user WHERE id = :id");
         $statement->execute(array(
             'id' => $id
         ));
@@ -32,4 +39,6 @@ function getTypeUser($id)
     }
 
    return $isSeller;
+}
+
 }
