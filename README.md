@@ -29,7 +29,7 @@ Un site web de commerce en ligne développé en PHP. L'objectif est de fournir u
 
 ## À changer lors de la récupération du code:
 - Le chemin des $targetDir se trouvant dans le dossier Controllers/product.php et dans les fonctions addProductBDD() && modifyProductBDD(), afin de pouvoir ajouter les images dans le dossier /Pictures.
-- Si nouvelle version (du 24 Janvier, dans la branche 'Thibault'), changer la connexion à la BDD dans le dossier Models/dbConnect.php.
+- Si nouvelle version (Ajout Singleton + Classes, dans la branche 'Thibault'), changer la connexion à la BDD dans le dossier Models/dbConnect.php.
 - Si ancienne version, changer les connexions à la BDD dans Models/product.php, User.php, Admin.php. 
 
 
