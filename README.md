@@ -15,6 +15,7 @@ Un site web de commerce en ligne développé en PHP. L'objectif est de fournir u
 - Inscription et authentification des utilisateurs (acheteurs et vendeurs).
 - Ajout, modification et suppression de produits par les vendeurs.
 - Rechercher et acheter les produits par les acheteurs.
+- Possibilité pour les administrateurs de gérer les utilisateurs et les annonces.
 - Processus de paiement en ligne sécurisé.
 - Possibilité de laisser des avis sur les produits, et la communication par message entre les vendeurs et les acheteurs .
 
