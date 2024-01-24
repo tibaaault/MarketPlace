@@ -2,7 +2,7 @@
 
 ## Auteurs:
 - [LAHOUAZI Milia](https://github.com/melialhz)
-- [Nom 2]
+- [GALIEGUE Enzo](https://github.com/Enzo0011)
 - [Nom 3]
 - [Nom 4]
 
