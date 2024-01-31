@@ -6,7 +6,7 @@
 function Connexion()
 {
     try {
-        $db = new PDO("mysql:host=localhost:8889;dbname=marketPlace", "root", "root");
+        $db = new PDO("mysql:host=localhost:8889;dbname=marketPlace", "user", "");
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }

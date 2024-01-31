@@ -1,11 +1,12 @@
 <?php 
 
-    class Cart extends Controller{
+    class Cart{
         private $db;
 
-        public function __construct(){
-            $this->db = new Database();
-        }
+    public function __construct() {
+        $this->db = $this->connexion();
+    }
+
 
         public function getAllCart(){
 

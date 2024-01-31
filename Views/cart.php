@@ -1,7 +1,7 @@
 
-<?php require_once ROOT ."/views/header.php" ?>
+<?php require_once "./header.php" ?>
     <div class="my-4 mx-auto">
-    <?php  if($data['cart']){ ?>
+    <?php  if(isset($_SESSION['cart'])){ ?>
         <table style='background:#ffffff' class="table">
             <thead class='thead-dark'>
                 <tr>

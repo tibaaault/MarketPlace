@@ -8,7 +8,7 @@ class Connexion
     private function __construct()
     {
         try {
-            $this->db = new PDO("mysql:host=localhost:8889;dbname=marketPlace", "root", "root");
+            $this->db = new PDO("mysql:host=localhost:8889;dbname=marketPlace", "user", "");
         } catch (PDOException $e) {
             die('Erreur : ' . $e->getMessage());
         }

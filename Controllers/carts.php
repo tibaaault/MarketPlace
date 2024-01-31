@@ -1,6 +1,6 @@
 <?php 
 
-    class Carts extends Controller {
+    class Carts  {
         private $cartModel;
         private $orderModel;
         public function __construct(){
@@ -27,8 +27,8 @@
             }else {
                 $cartItems = 0;
             }
-            Session::set('user_cart', $cartItems );
-            $this->view('front.cart',$data);
+         
+            $this->view('views.cart',$data);
         }
 
 
@@ -39,7 +39,7 @@
             Auth::userAuth();
             $data['title1'] = 'Thank You';
             $data['title2'] = 'Transaction Done';
-            $this->view('front.thank',$data);
+           
         }
 
 
@@ -50,7 +50,7 @@
             Auth::userAuth();
             $data['title1'] = 'Orders';
             $data['orderDetails'] = $this->orderModel->getUserOrderDetalails(Session::name('user_id'));
-            $this->view('front.orders',$data);
+            $this->view('views.displaySellerProducts',$data);
         }
 
 
@@ -125,8 +125,8 @@
             Csrf::CsrfToken();
             if($_SERVER['REQUEST_METHOD']=='POST'){
 
-                require_once('../vendor/autoload.php');
-                \Stripe\Stripe::setApiKey('sk_test_dRGPlCrOt3QXSuOxSwhvT5cZ00xTVDsc19');
+                require_once('../autoload.php');
+                \Stripe\Stripe::setApiKey('pk_test_51OalQpHZxzLfNhVMoT7wY6YoQRAL4g3QZKC1F7sAkFAqjTVYzzLD4TGbge49khAPwlBAazK1S5YE1tjqxK864Mq400MLZduVfZ');
 
                 $POST = filter_var_array($_POST, FILTER_SANITIZE_STRING);
                 $name = $_POST['name'];
@@ -206,7 +206,7 @@
                 
                 }else {
                     $data['cart'] = $this->cartModel->getAllCart();
-                    $this->view('front.cart', $data);
+                    $this->view('views.cart', $data);
                 }
             }else {
                 Redirect::to('carts');

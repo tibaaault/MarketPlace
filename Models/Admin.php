@@ -173,7 +173,7 @@ class AdminModel
     {
         try {
             // $db = new PDO("mysql:host=localhost:3306;dbname=marketPlace", "root", "root123");
-            $db = new PDO("mysql:host=localhost:8889;dbname=marketPlace", "root", "root");
+            $db = new PDO("mysql:host=localhost:8889;dbname=marketPlace", "user", "");
             return $db;
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
