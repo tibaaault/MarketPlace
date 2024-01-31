@@ -1,12 +1,10 @@
 <?php
-//page de paiement
 
-// Vérifiez si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Votre code de traitement ici
+   
 }
 
-// Incluez votre clé publique Stripe ici
+
 $publishableKey = 'pk_test_51OalQpHZxzLfNhVMoT7wY6YoQRAL4g3QZKC1F7sAkFAqjTVYzzLD4TGbge49khAPwlBAazK1S5YE1tjqxK864Mq400MLZduVfZ';
 ?>
 
