@@ -1,5 +1,11 @@
 # Projet : MarketPlace
 
+## Execution de l'application 
+- cloner le projet: `git clone git@github.com:tibaaault/MarketPlace.git`
+- Le chemin des $targetDir se trouvant dans le dossier Controllers/product.php et dans les fonctions addProductBDD() && modifyProductBDD(), afin de pouvoir ajouter les images dans le dossier /Pictures.
+- Si nouvelle version (Ajout Singleton + Classes, dans la branche 'Thibault'), changer la connexion à la BDD dans le dossier Models/dbConnect.php.
+- Si ancienne version, changer les connexions à la BDD dans Models/product.php, User.php, Admin.php. 
+
 ## Auteurs:
 - [LAHOUAZI Milia](https://github.com/melialhz)
 - [GALIEGUE Enzo](https://github.com/Enzo0011)
@@ -26,11 +32,6 @@ Un site web de commerce en ligne développé en PHP. L'objectif est de fournir u
 - HTML, CSS, JavaScript
 - model MVC
 - Programmation orientée objet (POO)
-
-## À changer lors de la récupération du code:
-- Le chemin des $targetDir se trouvant dans le dossier Controllers/product.php et dans les fonctions addProductBDD() && modifyProductBDD(), afin de pouvoir ajouter les images dans le dossier /Pictures.
-- Si nouvelle version (Ajout Singleton + Classes, dans la branche 'Thibault'), changer la connexion à la BDD dans le dossier Models/dbConnect.php.
-- Si ancienne version, changer les connexions à la BDD dans Models/product.php, User.php, Admin.php. 
 
 
 
