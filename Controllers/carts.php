@@ -206,7 +206,7 @@
                 
                 }else {
                     $data['cart'] = $this->cartModel->getAllCart();
-                    $this->view('views.cart', $data);
+                    Redirect::to('Views/paiementView.php');
                 }
             }else {
                 Redirect::to('carts');
